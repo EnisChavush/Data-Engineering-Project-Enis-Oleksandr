@@ -1,0 +1,93 @@
+{
+  "description": "Validation rules for the real-time sales transaction dataset",
+  "mandatory_columns": [
+    "transaction_id",
+    "timestamp",
+    "customer_id",
+    "product_id",
+    "product_name",
+    "category",
+    "quantity",
+    "unit_price",
+    "total_price",
+    "payment_method"
+  ],
+  "non_mandatory_columns": [
+    "discount_pct",
+    "store_id",
+    "region",
+    "return_flag",
+    "notes"
+  ],
+  "rules": {
+    "transaction_id": {
+      "type": "string",
+      "not_null": true,
+      "unique": true,
+      "description": "Transaction ID must be unique and non-null"
+    },
+    "timestamp": {
+      "type": "datetime",
+      "not_null": true,
+      "description": "Timestamp must be a valid datetime"
+    },
+    "customer_id": {
+      "type": "string",
+      "not_null": true,
+      "description": "Customer ID must be non-null"
+    },
+    "product_id": {
+      "type": "string",
+      "not_null": true,
+      "description": "Product ID must be non-null"
+    },
+    "product_name": {
+      "type": "string",
+      "not_null": true,
+      "description": "Product name must be non-null"
+    },
+    "category": {
+      "type": "string",
+      "not_null": true,
+      "allowed_values": ["Electronics", "Clothing", "Food", "Books", "Home", "Sports", "Toys", "Beauty"],
+      "description": "Category must be one of the allowed values"
+    },
+    "quantity": {
+      "type": "integer",
+      "not_null": true,
+      "min": 1,
+      "max": 1000,
+      "description": "Quantity must be between 1 and 1000"
+    },
+    "unit_price": {
+      "type": "numeric",
+      "not_null": true,
+      "min": 0.01,
+      "description": "Unit price must be positive"
+    },
+    "total_price": {
+      "type": "numeric",
+      "not_null": true,
+      "min": 0,
+      "description": "Total price must be >= 0"
+    },
+    "payment_method": {
+      "type": "string",
+      "not_null": true,
+      "allowed_values": ["Credit Card", "Debit Card", "Cash", "PayPal", "Bank Transfer", "Voucher"],
+      "description": "Payment method must be one of the allowed values"
+    },
+    "discount_pct": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "max": 100,
+      "description": "Discount percentage must be between 0 and 100 if present"
+    },
+    "return_flag": {
+      "type": "boolean",
+      "not_null": false,
+      "description": "Return flag must be boolean if present"
+    }
+  }
+}

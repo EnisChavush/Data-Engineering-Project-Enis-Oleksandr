@@ -1,0 +1,206 @@
+transaction_id,timestamp,customer_id,product_id,product_name,category,quantity,unit_price,total_price,payment_method,discount_pct,store_id,region,return_flag,notes
+E6ED7328,2025-08-05 09:39:57,C7964,P002,Smartphone,Electronics,7,130.72,914.12,Debit Card,0.1,S01,Antwerp,False,
+79AFCF6C,2025-04-13 17:58:55,C8757,P050,Yoga Mat,Sports,7,303.8,2126.6,PayPal,0.0,S04,Antwerp,False,
+AC315374,2025-12-26 18:56:50,C2333,P031,Data Engineering,Books,9,23.04,158.01,Debit Card,23.8,S04,Brussels,True,Express delivery
+B4FFE1F3,2025-06-04 18:29:50,C7557,P042,Candle Pack,Home,7,190.76,973.45,Debit Card,27.1,S05,Antwerp,True,Gift wrap requested
+B92170F2,2025-02-22 07:58:17,C5264,P002,Smartphone,Electronics,5,222.76,1113.8,Debit Card,0.0,S02,Bruges,False,Express delivery
+C87FD2B5,2025-04-06 16:25:55,,P032,Clean Code,Books,6,166.39,998.34,Cash,0.0,S03,Brussels,False,
+B8FF4B76,2025-04-20 07:22:22,C4310,P052,Running Shoes,Sports,3,227.65,682.95,Bank Transfer,0.0,S02,Antwerp,False,Gift wrap requested
+E61346F9,2025-07-24 10:26:37,C1664,P020,Coffee Beans,Food,2,259.25,371.25,PayPal,28.4,S05,Antwerp,True,
+F1FDB040,2025-10-22 20:03:44,C8386,P062,Puzzle,Toys,6,370.28,1706.25,PayPal,23.2,S02,Antwerp,False,
+BEAF3493,2025-07-11 07:14:37,C3016,P020,Coffee Beans,Food,1,199.34,199.34,Credit Card,0.0,S01,Brussels,True,Express delivery
+2A56F94F,2025-04-03 10:40:51,C7408,P012,Jacket,Clothing,1,317.52,317.52,PayPal,0.0,S01,Bruges,False,Express delivery
+9A3D5621,2025-06-11 08:09:55,C7370,P061,Board Game,Toys,8,286.91,2295.28,Cash,0.0,S01,Ghent,True,Gift wrap requested
+123AEF2C,2025-04-24 09:50:33,C8171,P062,Puzzle,Toys,6,98.12,588.72,Credit Card,0.0,S03,Brussels,True,Gift wrap requested
+57EC1AD0,2025-06-24 02:15:13,C5647,P004,Tablet,Electronics,3,189.18,530.65,Debit Card,6.5,S03,Bruges,True,Gift wrap requested
+2DB88184,2025-07-18 09:08:02,C5462,P020,Coffee Beans,Food,6,68.74,291.18,Debit Card,29.4,S03,Ghent,True,
+20FF7D0A,2025-12-29 19:07:11,C9246,P072,Perfume,Beauty,9,15.92,143.28,PayPal,0.0,S05,Brussels,False,Express delivery
+DC0DFDA0,2025-04-06 05:37:43,C4707,P041,Cushion Set,Home,3,467.72,1403.16,Debit Card,0.0,S04,Antwerp,False,
+EB15184B,2025-03-07 18:19:57,C7911,P051,Dumbbell Set,Sports,4,390.59,1562.36,Cash,0.0,S03,Antwerp,True,
+722F71AB,2025-09-15 13:43:55,C8098,P042,Candle Pack,Home,1,82.61,76.33,PayPal,7.6,S02,Brussels,False,
+7A2E31CC,2025-05-07 12:29:54,C9832,P004,Tablet,Electronics,4,443.11,1339.96,Bank Transfer,24.4,S03,Ghent,False,
+174F975A,2025-06-19 16:28:37,C9934,P021,Chocolate Box,Food,7,461.58,3156.75,Voucher,2.3,S01,Leuven,False,
+85C940A7,2025-04-13 09:26:05,C5139,P060,Lego Set,Toys,9,237.6,2138.4,Debit Card,0.0,S04,Brussels,False,Express delivery
+FCD18699,2025-01-03 14:56:11,,P070,Face Cream,Beauty,9,468.37,3907.61,Bank Transfer,7.3,S02,Bruges,False,Gift wrap requested
+DC9DCA90,2025-09-01 18:43:31,C4946,P052,Running Shoes,Sports,4,65.75,256.69,Debit Card,2.4,S03,Bruges,False,Express delivery
+AB646026,2025-05-11 20:11:13,C2668,P060,Lego Set,Toys,6,202.6,888.6,Credit Card,26.9,S01,Bruges,False,
+5E498953,2025-07-13 21:23:50,C8721,P061,Board Game,Toys,10,120.75,1046.9,PayPal,13.3,S02,Bruges,True,Gift wrap requested
+5C5E2691,2025-05-16 17:38:10,C9377,P002,Smartphone,Unknown,2,382.8,765.6,Credit Card,0.0,S05,Bruges,False,
+6D5AC635,2025-07-13 12:54:38,C9557,P051,Dumbbell Set,Sports,3,36.64,109.92,PayPal,0.0,S02,Antwerp,True,Express delivery
+32389E95,2025-05-22 13:33:23,C6742,P020,Coffee Beans,Food,7,80.51,563.57,Cash,0.0,S04,Brussels,False,
+CEC12299,2025-06-11 19:22:49,C5266,P042,Candle Pack,Home,1,165.22,165.22,Bank Transfer,0.0,S02,Ghent,False,Gift wrap requested
+0DB9D705,2025-10-08 21:26:56,C6801,P061,Board Game,Toys,2,176.0,352.0,Cash,0.0,S05,Leuven,True,Express delivery
+B92198A7,2025-07-13 00:56:08,C5606,P061,Board Game,Toys,5,4.98,24.9,PayPal,0.0,S04,Antwerp,True,Express delivery
+3F55D40D,2025-04-02 06:24:50,C4349,P050,Yoga Mat,Sports,9,438.17,3943.53,PayPal,0.0,S01,Brussels,False,Express delivery
+E2B516D1,2025-10-09 13:41:12,C4569,P051,Dumbbell Set,Sports,10,337.47,2689.64,Debit Card,20.3,S04,Leuven,False,
+0B5B1BD7,2025-10-18 05:14:34,C3413,P001,Laptop,Electronics,5,411.59,1992.1,PayPal,3.2,S05,Brussels,False,Gift wrap requested
+FBF67F73,2025-10-22 07:01:27,C7201,P032,Clean Code,Books,5,387.33,1376.96,Debit Card,28.9,S01,Brussels,True,Express delivery
+9877CE44,2025-07-24 22:42:29,C2293,P051,Dumbbell Set,Sports,1,255.39,241.09,Voucher,5.6,S05,Leuven,True,
+F295BC35,2025-07-14 23:12:41,C3950,P032,Clean Code,Books,4,150.7,602.8,Bank Transfer,0.0,S03,Brussels,False,
+EB089E09,2025-12-06 09:03:52,C3948,P003,Headphones,Electronics,3,207.49,622.47,Cash,0.0,S01,Brussels,False,
+C3BB2707,2025-01-21 11:26:38,C7799,P061,Board Game,Toys,7,1.32,9.24,PayPal,0.0,S02,Leuven,False,
+98394F5F,2025-02-22 17:55:01,C3474,P013,Shoes,Clothing,8,37.19,267.17,Bank Transfer,10.2,S05,Ghent,True,Express delivery
+5D2FFAED,2025-09-21 15:18:38,C1254,P051,Dumbbell Set,Sports,6,160.92,965.52,Credit Card,0.0,S01,Antwerp,True,
+7092F403,2025-11-10 19:50:34,C1857,P061,Board Game,Toys,2,452.34,885.68,Bank Transfer,2.1,S02,Antwerp,False,
+18A2A5C8,2025-12-02 18:40:41,C4686,P072,Perfume,Beauty,3,340.46,1021.38,Voucher,0.0,S04,Bruges,True,
+ECA8A520,2025-02-14 12:59:37,C4889,P013,Shoes,Clothing,9,170.77,1536.93,PayPal,0.0,S05,Leuven,False,Gift wrap requested
+66B0C9CB,2025-06-04 12:16:41,C4027,P050,Yoga Mat,Sports,1,61.45,61.45,Crypto,0.0,S03,Brussels,False,Express delivery
+1259100A,2025-07-24 23:45:57,C5078,P060,Lego Set,Toys,2,492.32,984.64,Credit Card,0.0,S02,Bruges,False,Express delivery
+C421D3CF,2025-01-01 16:20:10,,P032,Clean Code,Books,4,373.94,1495.76,Voucher,0.0,S05,Antwerp,False,Gift wrap requested
+1D8D238C,2025-06-22 22:46:01,C3746,P032,Clean Code,Books,6,161.67,970.02,PayPal,0.0,S03,Brussels,False,Express delivery
+F41594CD,2025-04-17 01:46:38,C8593,P051,Dumbbell Set,Sports,7,64.09,348.14,Bank Transfer,22.4,S03,Bruges,False,Gift wrap requested
+270CCA7F,2025-08-23 19:08:27,C4166,P072,Perfume,Beauty,4,384.86,1539.44,Bank Transfer,0.0,S05,Ghent,True,Gift wrap requested
+F9B678D2,2025-09-12 23:48:15,C3898,P050,Yoga Mat,Sports,7,390.85,2735.95,Crypto,0.0,S02,Leuven,False,
+4D05E3CA,2025-05-30 07:11:29,C7795,P012,Jacket,Clothing,8,149.99,1011.53,Cash,15.7,S05,Bruges,True,Express delivery
+45C7A224,2025-11-14 19:20:10,C8206,P070,Face Cream,Beauty,8,462.56,3700.48,Bank Transfer,0.0,S05,Leuven,False,Express delivery
+B2DC6ACC,2025-06-05 16:47:28,C3474,P032,Clean Code,Books,7,63.17,330.76,Voucher,25.2,S02,Leuven,False,
+842798EF,2025-09-05 07:30:37,C3652,P042,Candle Pack,Home,3,324.13,972.39,Debit Card,0.0,S02,Brussels,False,
+6166037A,2025-04-28 15:30:59,C1591,P042,Candle Pack,Home,7,150.28,1051.96,Cash,0.0,S02,Ghent,False,
+BC7BF3CF,2025-02-06 18:45:35,C2308,P041,Cushion Set,Home,5,493.19,2465.95,Bank Transfer,0.0,S05,Antwerp,False,
+DD492618,2025-10-03 07:22:03,C4711,P031,Data Engineering,Books,4,-287.29,1149.16,Credit Card,0.0,S02,Ghent,False,
+1F542540,2025-06-01 08:37:50,C1379,P022,Tea Pack,Food,9,383.99,3455.91,Bank Transfer,0.0,S05,Ghent,False,
+7AF4C328,2025-04-01 05:35:53,C4672,P050,Yoga Mat,Sports,10,202.33,2023.3,PayPal,0.0,S05,Antwerp,True,
+C522F76B,2025-07-22 00:54:18,C5731,P012,Jacket,Clothing,3,173.13,519.39,Voucher,0.0,S02,Brussels,False,Gift wrap requested
+27E91C5D,2025-01-30 23:05:40,C9744,P012,Jacket,Clothing,7,185.88,1198.37,PayPal,7.9,S05,Bruges,True,
+ADAB68ED,2025-02-19 00:29:18,C2640,P022,Tea Pack,Food,10,212.96,1599.33,Debit Card,24.9,S03,Bruges,True,Express delivery
+8E6A219E,2025-07-14 04:30:32,C6207,P031,Data Engineering,Books,2,9.48,18.96,Voucher,0.0,S04,Leuven,False,Express delivery
+6B541EA8,2025-06-18 04:36:12,C3414,P021,Chocolate Box,Food,2,78.11,143.25,Credit Card,8.3,S02,Leuven,True,
+3867BC30,2025-01-20 03:41:27,C4988,P013,Shoes,Clothing,1,440.62,440.62,Bank Transfer,0.0,S02,Ghent,True,Gift wrap requested
+C947018C,2025-08-22 22:15:15,C6776,P051,Dumbbell Set,Sports,7,-374.44,2204.33,Voucher,15.9,S02,Leuven,False,
+17171940,2025-08-20 08:48:29,C4445,P041,Cushion Set,Home,4,64.89,259.56,Bank Transfer,0.0,S02,Brussels,True,Gift wrap requested
+C3F7F7F6,2025-02-27 17:50:51,C8871,P060,Lego Set,Toys,1,108.83,108.83,Bank Transfer,0.0,S03,Bruges,False,Gift wrap requested
+85FF27B6,2025-02-17 13:25:16,C9125,P004,Tablet,Electronics,9,355.24,3197.16,Debit Card,0.0,S04,Brussels,True,Express delivery
+EB573787,2025-04-01 03:15:30,,P012,Jacket,Clothing,5,314.14,1234.57,Credit Card,21.4,S02,Brussels,False,
+835EDFE7,2025-01-01 00:05:42,C9322,P020,Coffee Beans,Food,5,476.94,2384.7,Debit Card,0.0,S02,Ghent,True,
+16D346DD,2025-06-29 08:53:25,C6849,P021,Chocolate Box,Food,5,332.89,1263.32,Credit Card,24.1,S01,Leuven,True,
+3847B642,2025-03-30 07:28:38,C5671,P003,Headphones,Electronics,5,127.2,571.76,Bank Transfer,10.1,S05,Antwerp,False,
+7F12482F,2025-11-25 03:40:22,C9770,P013,Shoes,Clothing,7,192.33,1346.31,Cash,0.0,S05,Leuven,False,
+61AA4238,2025-06-16 09:09:18,C7879,P010,T-Shirt,Clothing,4,328.07,1139.06,Cash,13.2,S03,Ghent,False,Express delivery
+2B91C7F2,2025-04-15 15:00:06,C8467,P030,Python Cookbook,Books,1,249.57,187.68,Debit Card,24.8,S03,Leuven,True,
+2CAB72AC,2025-11-17 23:15:24,C3195,P041,Cushion Set,Home,1,275.54,272.23,PayPal,1.2,S05,Leuven,False,
+A85DAD6B,2025-05-16 17:41:59,C7330,P042,Candle Pack,Home,1,145.36,123.7,Cash,14.9,S02,Bruges,True,Gift wrap requested
+E97EB533,2025-05-08 08:22:37,C8846,P001,Laptop,Electronics,8,425.84,3406.72,Credit Card,0.0,S02,Brussels,True,Express delivery
+19274F24,2025-06-23 10:37:52,C2860,P012,Jacket,Clothing,10,54.8,398.94,PayPal,27.2,S04,Antwerp,False,Gift wrap requested
+C0FB52F6,2025-08-02 21:41:22,C7315,P052,Running Shoes,Sports,7,448.79,2510.08,PayPal,20.1,S01,Antwerp,False,
+9FEB390D,2025-12-25 17:36:32,C1122,P021,Chocolate Box,Food,9,252.42,1974.18,PayPal,13.1,S02,Brussels,True,
+E30B6730,2025-05-19 13:48:49,C8798,P004,Tablet,Electronics,3,15.13,35.45,Credit Card,21.9,S03,Leuven,False,Gift wrap requested
+924B96B7,2025-07-15 09:35:52,C4693,P001,Laptop,Electronics,9,344.77,3102.93,PayPal,0.0,S03,Leuven,False,Gift wrap requested
+FC0D4E36,2025-06-21 10:34:19,C3944,P071,Shampoo,Beauty,7,308.32,1815.08,Debit Card,15.9,S05,Brussels,False,Express delivery
+6D8B4612,2025-05-04 11:41:56,C7272,P003,Headphones,Electronics,8,47.13,269.96,Cash,28.4,S02,Brussels,False,
+2BFF1903,2025-07-20 15:00:03,C8076,P011,Jeans,Unknown,1,352.93,352.93,Bank Transfer,0.0,S03,Leuven,True,Gift wrap requested
+4A638E3F,2025-04-05 15:03:48,C5227,P070,Face Cream,Beauty,1,78.14,73.06,Voucher,6.5,S03,Leuven,True,
+FF0C7B52,2025-09-02 11:24:00,C2326,P060,Lego Set,Toys,4,242.59,970.36,Credit Card,0.0,S03,Bruges,False,
+DF929BD5,2025-10-28 21:41:18,C3381,P001,Laptop,Electronics,8,352.79,2822.32,Credit Card,0.0,S01,Bruges,False,
+C7E51FAB,2025-03-17 12:44:11,C7190,P042,Candle Pack,Home,1,24.38,22.62,PayPal,7.2,S02,Brussels,True,
+687FDA54,2025-10-31 17:21:45,C8054,P050,Yoga Mat,Sports,7,346.8,2427.6,Debit Card,0.0,S03,Antwerp,True,Gift wrap requested
+D3EF8574,2025-05-02 21:43:05,C6886,P002,Smartphone,Electronics,4,313.92,1255.68,Debit Card,0.0,S01,Ghent,True,Express delivery
+A23DA7BF,2025-02-18 09:50:45,C7052,P032,Clean Code,Books,7,113.84,796.88,Voucher,0.0,S02,Brussels,True,
+667DF58E,2025-01-29 21:10:44,C2212,P004,Tablet,Electronics,2,280.7,561.4,Bank Transfer,0.0,S04,Bruges,False,
+F80C2C7E,2025-11-19 14:50:23,C9433,P004,Tablet,Electronics,10,4.92,37.59,Voucher,23.6,S02,Bruges,False,Gift wrap requested
+A721EDCF,2025-07-27 11:20:40,C2093,P060,Lego Set,Toys,2,373.34,671.27,Cash,10.1,S04,Brussels,False,
+CFDF0B0D,2025-01-31 07:04:47,C4897,P060,Lego Set,Toys,9,62.33,560.97,Voucher,0.0,S03,Ghent,True,Gift wrap requested
+76CD3E92,2025-07-31 07:18:58,,P061,Board Game,Toys,7,374.16,2262.92,PayPal,13.6,S03,Bruges,False,Gift wrap requested
+45405A0D,2025-02-28 10:57:42,C2737,P011,Jeans,Clothing,7,388.6,2720.2,PayPal,0.0,S02,Antwerp,False,
+75EFFDC2,2025-10-02 05:21:00,C8870,P062,Puzzle,Toys,7,462.44,2968.4,Credit Card,8.3,S04,Leuven,False,Express delivery
+71CF9841,2025-05-28 13:30:55,C8917,P020,Coffee Beans,Food,10,481.86,3965.71,Debit Card,17.7,S02,Antwerp,True,Gift wrap requested
+511026A4,2025-09-18 00:21:34,C8143,P050,Yoga Mat,Sports,4,263.77,1055.08,Debit Card,0.0,S01,Leuven,False,
+3B4B0884,2025-11-11 18:05:52,C6232,P070,Face Cream,Beauty,3,466.53,1399.59,Cash,0.0,S01,Leuven,True,Express delivery
+F9AC6DC4,2025-01-08 05:01:53,C4796,P072,Perfume,Beauty,5,493.21,1987.64,Credit Card,19.4,S04,Bruges,True,Express delivery
+AC6D2F17,2025-06-17 13:30:36,C7013,P001,Laptop,Electronics,4,151.33,605.32,PayPal,0.0,S04,Brussels,False,
+0719355D,2025-12-26 12:35:20,C4572,P061,Board Game,Toys,8,422.61,3380.88,Credit Card,0.0,S01,Brussels,False,
+874926C5,2025-01-04 12:37:56,C5689,P003,Headphones,Electronics,1,200.39,141.48,Debit Card,29.4,S04,Ghent,True,Express delivery
+C98F537C,2025-02-05 09:58:59,C7294,P040,Lamp,Home,2,219.48,438.96,Cash,0.0,S01,Bruges,True,Express delivery
+E7CEA446,2025-08-20 06:43:35,C3856,P030,Python Cookbook,Books,2,97.45,194.9,Debit Card,0.0,S01,Antwerp,False,Gift wrap requested
+F348E58B,2025-09-28 22:03:04,C7461,P003,Headphones,Electronics,2,24.8,49.6,Voucher,0.0,S02,Antwerp,True,
+2B9A7617,2025-10-14 21:39:25,C4538,P071,Shampoo,Beauty,10,419.52,3784.07,Bank Transfer,9.8,S03,Ghent,False,
+CFC1E1C0,2025-07-17 14:37:43,C9867,P070,Face Cream,Beauty,9,274.78,2203.46,Debit Card,10.9,S05,Brussels,True,
+C3671A12,2025-11-30 02:54:43,C6434,P040,Lamp,Unknown,4,129.5,518.0,Credit Card,0.0,S04,Brussels,True,
+DC7F45EB,2025-04-25 12:28:25,C4925,P062,Puzzle,Toys,3,324.61,942.67,PayPal,3.2,S02,Ghent,True,
+19C43D56,2025-05-26 05:35:19,C6065,P061,Board Game,Toys,7,243.39,1703.73,Cash,0.0,S04,Brussels,False,
+D2DD72E1,2025-08-01 17:58:32,C4979,P020,Coffee Beans,Food,8,20.97,167.76,PayPal,0.0,S01,Antwerp,False,
+B86D57D1,2025-08-11 06:32:36,C4760,P040,Lamp,Home,9,474.42,3343.24,Voucher,21.7,S02,Bruges,False,
+7AE06A52,2025-09-27 01:44:46,C9640,P004,Tablet,Electronics,5,438.21,1779.13,Bank Transfer,18.8,S03,Bruges,False,Express delivery
+0D18A331,2025-12-08 10:31:13,C6850,P031,Data Engineering,Books,7,293.3,1745.13,Bank Transfer,15.0,S03,Brussels,True,Gift wrap requested
+A3A31A19,2025-08-30 21:37:52,C5148,P042,Candle Pack,Home,3,304.28,782.3,Cash,14.3,S04,Brussels,False,
+96E1CA2B,2025-07-26 12:24:01,C8914,P060,Lego Set,Toys,8,408.6,2820.97,PayPal,13.7,S04,Bruges,True,
+80FE575B,2025-10-16 05:04:44,C9279,P010,T-Shirt,Clothing,4,129.58,518.32,Bank Transfer,0.0,S01,Bruges,False,
+73012F3A,2025-02-14 12:29:33,C2728,P030,Python Cookbook,Books,7,140.69,834.15,Cash,15.3,S04,Leuven,True,Gift wrap requested
+8B43959C,2025-11-03 11:20:32,C1608,P031,Data Engineering,Books,2,13.11,26.22,Debit Card,0.0,S02,Brussels,True,
+525A4932,2025-10-16 22:10:33,C7227,P070,Face Cream,Beauty,4,52.64,191.82,Debit Card,8.9,S05,Leuven,False,Gift wrap requested
+0071A7BA,2025-10-27 18:39:07,C8300,P012,Jacket,Clothing,6,147.29,866.07,Credit Card,2.0,S02,Bruges,True,
+2DC48975,2025-08-29 15:17:34,C6252,P051,Dumbbell Set,Sports,2,448.85,897.7,PayPal,0.0,S03,Leuven,True,Gift wrap requested
+E4FE7237,2025-12-08 14:55:36,C8003,P052,Running Shoes,Sports,10,327.04,3270.4,Credit Card,0.0,S02,Brussels,False,Express delivery
+28C84829,2025-05-11 14:06:45,C8878,P042,Candle Pack,Home,8,344.94,2119.31,Voucher,23.2,S03,Ghent,False,Gift wrap requested
+4D3F8175,2025-01-26 11:20:04,C7286,P003,Headphones,Electronics,3,18.77,55.8,Voucher,0.9,S05,Ghent,True,
+B7E20DA4,2025-09-05 12:01:52,C9169,P060,Lego Set,Toys,9,84.6,603.03,Bank Transfer,20.8,S04,Bruges,False,
+31182E1D,2025-03-01 08:01:48,C7107,P060,Lego Set,Toys,10,465.81,3791.69,Credit Card,18.6,S03,Bruges,True,Express delivery
+5FDD10DD,2025-07-03 19:57:22,C8548,P042,Candle Pack,Home,2,393.2,666.08,Cash,15.3,S01,Antwerp,False,
+252BE4BA,2025-02-07 10:38:23,C7830,P041,Cushion Set,Home,9,456.0,4104.0,PayPal,0.0,S04,Brussels,True,Express delivery
+8F8003BE,2025-10-15 05:22:39,C5008,P004,Tablet,Electronics,1,291.47,221.52,PayPal,24.0,S02,Bruges,True,Gift wrap requested
+964E8B89,2025-12-01 08:40:08,C6821,P041,Cushion Set,Home,9,154.45,1144.01,Credit Card,17.7,S04,Leuven,True,
+7A3C8B8C,2025-09-23 21:23:35,C1474,P071,Shampoo,Beauty,3,190.58,445.96,PayPal,22.0,S02,Antwerp,True,Express delivery
+31D4A0F9,2025-06-18 18:36:58,C4692,P010,T-Shirt,Clothing,0,415.93,2785.07,Debit Card,16.3,S05,Brussels,True,Express delivery
+9490F557,2025-07-04 05:18:11,C9915,P061,Board Game,Toys,9,321.13,2075.14,Debit Card,28.2,S03,Bruges,True,
+AE246FF1,2025-02-19 21:49:00,C4429,P004,Tablet,Electronics,1,96.19,69.16,Debit Card,28.1,S03,Ghent,True,Express delivery
+97D969F6,2025-06-21 15:15:31,C2793,P011,Jeans,Clothing,7,48.02,303.87,Cash,9.6,S03,Bruges,False,Express delivery
+24351902,2025-05-11 23:29:26,C9495,P050,Yoga Mat,Sports,9,86.17,590.95,Voucher,23.8,S05,Ghent,False,
+614CA1D6,2025-05-09 19:39:24,C2422,P070,Face Cream,Beauty,5,108.87,544.35,Debit Card,0.0,S02,Bruges,False,Express delivery
+B9657F10,2025-01-15 20:30:58,C9085,P052,Running Shoes,Sports,3,185.45,439.52,Debit Card,21.0,S04,Bruges,True,
+9D8BC51C,2025-02-14 03:41:36,C2238,P070,Face Cream,Beauty,10,286.5,2865.0,PayPal,0.0,S04,Brussels,True,
+D5DE76FA,2025-01-03 22:46:06,C1039,P040,Lamp,Home,3,11.46,30.91,Bank Transfer,10.1,S03,Ghent,True,Gift wrap requested
+7D0B5826,2025-08-12 03:20:06,C4880,P011,Jeans,Clothing,5,63.45,317.25,Credit Card,0.0,S03,Bruges,True,
+DD8CB4A2,2025-12-05 15:07:45,C5935,P040,Lamp,Home,5,295.0,1184.43,PayPal,19.7,S05,Leuven,True,
+EC51F8F4,2025-07-29 14:04:38,C2334,P031,Data Engineering,Books,2,478.89,957.78,Cash,0.0,S03,Antwerp,True,
+069A065D,2025-11-16 03:25:40,C4342,P062,Puzzle,Toys,10,91.21,844.6,Bank Transfer,7.4,S02,Brussels,False,
+4342455B,2025-08-03 17:47:19,C3577,P062,Puzzle,Toys,4,487.43,1949.72,Voucher,0.0,S03,Ghent,True,
+A78C8801,2025-03-12 22:20:50,C9539,P020,Coffee Beans,Food,9,390.32,3512.88,Credit Card,0.0,S04,Antwerp,True,Express delivery
+A7A9B3F7,2025-03-31 03:26:46,C9998,P040,Lamp,Home,2,270.5,422.52,Cash,21.9,S05,Brussels,True,Express delivery
+84FA3B68,2025-07-27 00:52:42,C5037,P021,Chocolate Box,Food,4,182.37,729.48,Credit Card,0.0,S04,Leuven,False,
+A075200A,2025-01-04 14:39:37,C6753,P052,Running Shoes,Sports,2,73.0,146.0,Cash,0.0,S03,Leuven,True,Gift wrap requested
+F63178A9,2025-03-10 08:17:38,C3481,P004,Tablet,Electronics,10,84.95,802.78,Cash,5.5,S03,Bruges,True,
+6ACAE9C5,2025-08-04 04:52:28,C6189,P001,Laptop,Electronics,7,80.47,445.56,Debit Card,20.9,S03,Leuven,False,Express delivery
+91CC3CAC,2025-08-02 21:01:28,C1267,P020,Coffee Beans,Food,3,131.62,394.86,Voucher,0.0,S04,Leuven,False,Express delivery
+DF4607AC,2025-12-08 19:51:00,C2661,P040,Lamp,Home,2,328.4,656.8,Debit Card,0.0,S02,Brussels,False,Gift wrap requested
+F48052D1,2025-12-07 02:53:57,C4980,P013,Shoes,Clothing,8,234.31,1874.48,Bank Transfer,0.0,S05,Bruges,False,
+1C5ECA12,2025-05-24 17:03:11,C5718,P012,Jacket,Clothing,2,284.86,438.68,Cash,23.0,S02,Bruges,False,
+0F9858D6,2025-08-15 19:31:02,C2856,P031,Data Engineering,Books,2,138.65,277.3,Debit Card,0.0,S02,Leuven,True,Express delivery
+9780FF68,2025-06-14 11:29:35,C5959,P061,Board Game,Toys,1,1.75,1.54,PayPal,11.8,S02,Antwerp,False,Express delivery
+09AC486E,2025-11-09 02:23:30,C5708,P062,Puzzle,Toys,1,407.31,286.75,PayPal,29.6,S03,Leuven,True,Gift wrap requested
+AFBC5E8B,2025-07-03 17:27:43,C5097,P003,Headphones,Electronics,10,53.84,409.72,Debit Card,23.9,S05,Ghent,True,
+36523777,2025-04-02 16:34:23,C1591,P011,Jeans,Clothing,5,41.74,196.18,Bank Transfer,6.0,S04,Brussels,True,
+82A06B17,2025-10-30 15:15:37,C5874,P032,Clean Code,Books,3,318.08,954.24,Bank Transfer,0.0,S03,Leuven,False,Express delivery
+9BFB982B,2025-06-16 05:43:41,C3085,P062,Puzzle,Toys,10,447.13,3755.89,Cash,16.0,S03,Antwerp,False,
+49F12F4C,2025-11-20 06:01:53,C4342,P041,Cushion Set,Home,7,200.63,1404.41,Bank Transfer,0.0,S01,Ghent,False,
+DA6AD5F7,2025-04-13 03:29:24,C8762,P031,Data Engineering,Books,3,289.54,868.62,Cash,0.0,S04,Ghent,True,Express delivery
+112162FC,2025-11-26 03:14:02,C6492,P032,Clean Code,Books,10,450.69,4506.9,PayPal,0.0,S04,Leuven,False,Gift wrap requested
+5EF96584,2025-02-16 09:35:34,C6763,P052,Running Shoes,Sports,2,207.84,317.58,Debit Card,23.6,S02,Bruges,False,
+29C910FC,2025-02-25 09:00:27,C2554,P052,Running Shoes,Sports,9,223.79,1526.7,Cash,24.2,S05,Brussels,True,Gift wrap requested
+040D7138,2025-05-03 09:45:11,C8681,P030,Python Cookbook,Books,4,106.77,427.08,Crypto,0.0,S02,Brussels,True,Gift wrap requested
+4886E238,2025-12-16 10:12:22,C4279,P040,Lamp,Home,9,469.07,3326.64,Cash,21.2,S05,Bruges,False,
+B1EB862B,2025-04-25 11:59:29,C8975,P031,Data Engineering,Books,3,327.61,982.83,Debit Card,0.0,S01,Antwerp,False,Gift wrap requested
+AED10AE9,2025-08-31 03:26:10,C5411,P070,Face Cream,Beauty,8,120.05,714.54,PayPal,25.6,S03,Ghent,True,
+82DE6E08,2025-04-23 20:59:03,C8688,P013,Shoes,Clothing,7,399.5,2796.5,Bank Transfer,0.0,S01,Leuven,False,Gift wrap requested
+D7346937,2025-09-02 08:11:25,C4422,P020,Coffee Beans,Food,0,198.92,397.84,Debit Card,0.0,S04,Leuven,True,Gift wrap requested
+6C8B04B4,2025-08-11 17:54:57,C3707,P003,Headphones,Electronics,5,20.8,104.0,Credit Card,0.0,S01,Brussels,False,
+A59682A8,2025-03-23 00:17:13,C3049,P010,T-Shirt,Clothing,6,84.52,507.12,Voucher,0.0,S03,Leuven,True,
+9A1F0379,2025-08-29 19:30:15,C9697,P031,Data Engineering,Books,8,495.4,3963.2,Bank Transfer,0.0,S03,Leuven,False,Gift wrap requested
+9053F647,2025-11-26 03:43:41,C8467,P051,Dumbbell Set,Sports,8,136.71,1093.68,Credit Card,0.0,S01,Leuven,False,Express delivery
+C9937AB4,2025-04-22 01:28:04,C5998,P032,Clean Code,Books,1,42.33,41.91,PayPal,1.0,S05,Ghent,False,
+7DBEDE21,2025-07-08 02:18:17,C7675,P031,Data Engineering,Books,6,412.6,2475.6,Credit Card,0.0,S04,Brussels,False,Express delivery
+BBB9992A,2025-12-01 03:07:10,C4597,P032,Clean Code,Books,7,486.77,2681.62,Bank Transfer,21.3,S04,Antwerp,False,
+DC0BFD14,2025-08-19 14:44:42,C7926,P020,Coffee Beans,Food,1,225.73,186.0,Bank Transfer,17.6,S01,Leuven,True,Gift wrap requested
+26713004,2025-12-17 09:04:20,C1767,P052,Running Shoes,Sports,7,227.39,1591.73,Bank Transfer,0.0,S02,Ghent,True,
+D14F42BB,2025-05-19 01:08:26,C1531,P022,Tea Pack,Food,8,84.63,475.96,Debit Card,29.7,S03,Antwerp,False,
+7B9F77F0,2025-08-19 10:08:03,C6379,P072,Perfume,Beauty,1,2.14,1.74,Debit Card,18.9,S02,Brussels,True,
+A87EB5A0,2025-05-09 13:27:07,C7024,P013,Shoes,Clothing,2,109.17,203.93,Debit Card,6.6,S01,Leuven,True,Gift wrap requested
+CC623596,2025-12-02 19:30:40,C3320,P061,Board Game,Toys,10,365.06,3650.6,Bank Transfer,0.0,S05,Leuven,False,
+E4EAA0BD,2025-03-20 18:16:54,C5342,P020,Coffee Beans,Food,4,267.96,1071.84,Credit Card,0.0,S01,Brussels,True,Express delivery
+7CB4DC5B,2025-08-09 04:23:14,C8470,P030,Python Cookbook,Books,2,92.27,184.54,Debit Card,0.0,S03,Brussels,False,Express delivery
+F041BEC6,2025-02-05 21:35:10,C3326,P031,Data Engineering,Books,1,-181.27,139.4,Bank Transfer,23.1,S03,Bruges,True,Gift wrap requested
+E522660F,2025-11-22 05:45:08,C4157,P051,Dumbbell Set,Sports,5,252.6,1059.66,Credit Card,16.1,S03,Bruges,True,
+60FEE448,2025-08-10 13:24:24,C4502,P041,Cushion Set,Home,9,229.65,1787.83,PayPal,13.5,S05,Leuven,False,
+CEC12299,2025-06-11 19:22:49,C5266,P042,Candle Pack,Home,1,165.22,165.22,Bank Transfer,0.0,S02,Ghent,False,Gift wrap requested
+4A638E3F,2025-04-05 15:03:48,C5227,P070,Face Cream,Beauty,1,78.14,73.06,Voucher,6.5,S03,Leuven,True,
+B1EB862B,2025-04-25 11:59:29,C8975,P031,Data Engineering,Books,3,327.61,982.83,Debit Card,0.0,S01,Antwerp,False,Gift wrap requested
+722F71AB,2025-09-15 13:43:55,C8098,P042,Candle Pack,Home,1,82.61,76.33,PayPal,7.6,S02,Brussels,False,
+6ACAE9C5,2025-08-04 04:52:28,C6189,P001,Laptop,Electronics,7,80.47,445.56,Debit Card,20.9,S03,Leuven,False,Express delivery

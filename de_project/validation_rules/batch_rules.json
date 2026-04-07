@@ -1,0 +1,117 @@
+{
+  "mandatory_columns": [
+    "tpep_pickup_datetime",
+    "tpep_dropoff_datetime",
+    "passenger_count",
+    "trip_distance",
+    "PULocationID",
+    "DOLocationID",
+    "payment_type",
+    "fare_amount",
+    "total_amount"
+  ],
+  "non_mandatory_columns": [
+    "tip_amount",
+    "tolls_amount",
+    "extra",
+    "Airport_fee",
+    "congestion_surcharge",
+    "cbd_congestion_fee",
+    "store_and_fwd_flag",
+    "RatecodeID"
+  ],
+  "rules": {
+    "tpep_pickup_datetime": {
+      "type": "datetime",
+      "not_null": true,
+      "description": "Pickup timestamp must be a valid datetime"
+    },
+    "tpep_dropoff_datetime": {
+      "type": "datetime",
+      "not_null": true,
+      "after_column": "tpep_pickup_datetime",
+      "description": "Dropoff must be after pickup"
+    },
+    "passenger_count": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 1,
+      "max": 8,
+      "description": "Passenger count must be between 1 and 8"
+    },
+    "trip_distance": {
+      "type": "numeric",
+      "not_null": true,
+      "min": 0,
+      "description": "Trip distance must be >= 0"
+    },
+    "PULocationID": {
+      "type": "integer",
+      "not_null": true,
+      "min": 1,
+      "max": 265,
+      "description": "Pickup location ID must be a valid NYC taxi zone (1-265)"
+    },
+    "DOLocationID": {
+      "type": "integer",
+      "not_null": true,
+      "min": 1,
+      "max": 265,
+      "description": "Dropoff location ID must be a valid NYC taxi zone (1-265)"
+    },
+    "payment_type": {
+      "type": "integer",
+      "not_null": true,
+      "allowed_values": [1, 2, 3, 4, 5, 6],
+      "description": "Payment type must be 1-6 (Credit card, Cash, No charge, Dispute, Unknown, Voided)"
+    },
+    "fare_amount": {
+      "type": "numeric",
+      "not_null": true,
+      "min": 0,
+      "description": "Fare amount must be >= 0"
+    },
+    "total_amount": {
+      "type": "numeric",
+      "not_null": true,
+      "min": 0,
+      "description": "Total amount must be >= 0"
+    },
+    "tip_amount": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "description": "Tip amount must be >= 0 if present"
+    },
+    "tolls_amount": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "description": "Tolls amount must be >= 0 if present"
+    },
+    "extra": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "description": "Extra charges must be >= 0 if present"
+    },
+    "Airport_fee": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "description": "Airport fee must be >= 0 if present"
+    },
+    "congestion_surcharge": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "description": "Congestion surcharge must be >= 0 if present"
+    },
+    "cbd_congestion_fee": {
+      "type": "numeric",
+      "not_null": false,
+      "min": 0,
+      "description": "CBD congestion fee must be >= 0 if present"
+    }
+  }
+}
