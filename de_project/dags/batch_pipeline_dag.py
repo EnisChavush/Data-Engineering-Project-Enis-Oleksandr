@@ -1,14 +1,8 @@
-"""
-batch_pipeline_dag.py – Airflow DAG for Yellow Taxi Batch Processing (Part 1).
-
-Schedule: Run once on defence day (set DEFENCE_DATE below or via Airflow Variable).
-Pipeline: Reader → Validator → Processor → Backup Validator → Writer
-"""
-
 import logging
 import sys
 from pathlib import Path
 from datetime import datetime, timedelta
+import pandas as pd
 
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
@@ -25,8 +19,9 @@ from pipeline.writer import write_all
 
 logger = logging.getLogger(__name__)
 
-# ── Config ────────────────────────────────────────────────────────────────────
-# Override via Airflow Variable "TAXI_DATA_PATH" or set the path directly.
+# Variables in caps-lock (TAXI_DATA_PATH, UPLOAD_TO_AZURE, DEFENCE_DATE)
+# below refer to the ones that can be set in Airflow
+
 DATA_PATH = Variable.get(
     "TAXI_DATA_PATH",
     default_var=str(Path(__file__).resolve().parent.parent / "yellow_tripdata_2025-01.parquet"),
@@ -45,12 +40,14 @@ default_args = {
     "retry_delay": timedelta(minutes=5),
 }
 
-# ── Task functions ────────────────────────────────────────────────────────────
-
 def task_read(**context):
+    """
+    Reads the taxi dataset from DATA_PATH.
+    Because the dataset is big, we avoid storing the DataFrame directly
+    in XCom. Instead we write it to a temp parquet file and push
+    only the file path via XCom for the next task to pick up.
+    """
     df = read_parquet(DATA_PATH)
-    # Store shape for logging; pass data via XCom (for small datasets) or file.
-    # For 3.5M rows we use a temp parquet file to avoid XCom size limits.
     tmp = Path("/tmp/taxi_raw.parquet")
     df.to_parquet(tmp, index=False)
     context["ti"].xcom_push(key="raw_path", value=str(tmp))
@@ -58,6 +55,12 @@ def task_read(**context):
 
 
 def task_validate(**context):
+    """
+    Gets the parquet path from XCom, then runs validate() to
+    check if a given row passes the rules.
+    Rows that pass go to taxi_valid.parquet; rows that fail go to taxi_invalid.parquet.
+    Both paths are pushed to XCom so that the following tasks can access them.
+    """
     import pandas as pd
     raw_path = context["ti"].xcom_pull(key="raw_path", task_ids="reader")
     df = pd.read_parquet(raw_path)
@@ -74,7 +77,10 @@ def task_validate(**context):
 
 
 def task_process(**context):
-    import pandas as pd
+    """
+    Gets the parquet path from Xcom and produces transformed columns.
+    The result is written to a temp file and its path is pushed to XCom.
+    """
     valid_path = context["ti"].xcom_pull(key="valid_path", task_ids="validator")
     df = pd.read_parquet(valid_path)
 
@@ -86,7 +92,11 @@ def task_process(**context):
 
 
 def task_backup_validate(**context):
-    import pandas as pd
+    """
+    Runs backup_validate() to check if any rows were invalidly processed.
+    Merges them with previously invalidated rows (before processing step)
+    The remaining clean rows and the combined invalid rows are both saved and pushed to XCom.
+    """
     processed_path = context["ti"].xcom_pull(key="processed_path", task_ids="processor")
     invalid_path = context["ti"].xcom_pull(key="invalid_path", task_ids="validator")
 
@@ -108,7 +118,13 @@ def task_backup_validate(**context):
 
 
 def task_write(**context):
-    import pandas as pd
+    """
+    Writes final outputs locally and optionally to Azure.
+
+    Gets the clean and invalid parquet paths from XCom and calls write_all(), which
+    saves the results to the output folder. If UPLOAD_TO_AZURE is True,
+    the files are also uploaded to the Azure Blob Storage.
+    """
     clean_path = context["ti"].xcom_pull(key="clean_path", task_ids="backup_validator")
     invalid_path = context["ti"].xcom_pull(key="invalid_final_path", task_ids="backup_validator")
 
@@ -119,12 +135,10 @@ def task_write(**context):
     logger.info(f"Write results: {results}")
 
 
-# ── DAG definition ────────────────────────────────────────────────────────────
-
 with DAG(
     dag_id="yellow_taxi_batch_pipeline",
     default_args=default_args,
-    description="Part 1: Yellow Taxi Batch Processing Pipeline",
+    description="Yellow Taxi Batch Processing Pipeline",
     schedule_interval=None,          # Triggered manually on defence day
     start_date=datetime.strptime(DEFENCE_DATE, "%Y-%m-%d"),
     catchup=False,
