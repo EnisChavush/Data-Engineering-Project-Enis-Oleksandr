@@ -10,6 +10,7 @@ from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.standard.sensors.filesystem import FileSensor
 from airflow.models import Variable
 
+# Allow importing our pipeline package when running from the dags folder
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pipeline.realtime_validator import validate_realtime
@@ -17,6 +18,9 @@ from pipeline.realtime_processor import process_realtime
 from pipeline.writer import write_all
 
 logger = logging.getLogger(__name__)
+
+# Variables in caps-lock (REALTIME_INPUT_DIR, UPLOAD_TO_AZURE)
+# below refer to the ones that can be set in Airflow
 
 INPUT_DIR = Path(Variable.get(
     "REALTIME_INPUT_DIR",
@@ -48,6 +52,7 @@ def _find_new_file() -> Path | None:
 
 
 def _read_file(path: Path) -> pd.DataFrame:
+    """Reads a .csv or .xlsx file into a DataFrame based on its extension."""
     if path.suffix.lower() == ".csv":
         return pd.read_csv(path)
     elif path.suffix.lower() in (".xlsx", ".xls"):
@@ -56,6 +61,12 @@ def _read_file(path: Path) -> pd.DataFrame:
 
 
 def task_detect_and_read(**context):
+    """
+    Scans INPUT_DIR for any .csv or .xlsx file that hasn't been moved to
+    the 'processed' sub-folder yet. Reads the first one it finds, saves it
+    as a temp parquet file, and pushes both the temp path and the original
+    source file path to XCom so later tasks know what was processed.
+    """
     file_path = _find_new_file()
     if file_path is None:
         raise FileNotFoundError("No new .csv or .xlsx file found in input folder.")
@@ -71,6 +82,11 @@ def task_detect_and_read(**context):
 
 
 def task_validate(**context):
+    """
+    Gets the parquet from XCom,
+    validates the rows, splits them into valid/invalid categories,
+    and lastly saves the valid/invalid rows to separate files.
+    """
     raw_path = context["ti"].xcom_pull(key="raw_path", task_ids="reader")
     df = pd.read_parquet(raw_path)
 
@@ -86,6 +102,10 @@ def task_validate(**context):
 
 
 def task_process(**context):
+    """
+    Runs process_realtime() which adds derived columns specific to sales data
+    Result is saved to a temp file and the path is pushed to XCom.
+    """
     valid_path = context["ti"].xcom_pull(key="valid_path", task_ids="validator")
     df = pd.read_parquet(valid_path)
 
@@ -97,6 +117,11 @@ def task_process(**context):
 
 
 def task_backup_validate(**context):
+    """
+    Validate the rows again (after processing) and invalidate those that
+    didn't pass the check. Merge them with previously
+    invalidated rows before processing.
+    """
     processed_path = context["ti"].xcom_pull(key="processed_path", task_ids="processor")
     invalid_path = context["ti"].xcom_pull(key="invalid_path", task_ids="validator")
     df = pd.read_parquet(processed_path)
@@ -136,6 +161,12 @@ def task_backup_validate(**context):
 
 
 def task_write(**context):
+    """
+    Gets the clean and invalid parquet paths from XCom and writes them via
+    write_all()
+    Moves the original source file into the 'processed' sub-folder
+    so the FileSensor won't detect it again on the next DAG run.
+    """
     clean_path = context["ti"].xcom_pull(key="clean_path", task_ids="backup_validator")
     invalid_path = context["ti"].xcom_pull(key="invalid_final_path", task_ids="backup_validator")
     source_file = context["ti"].xcom_pull(key="source_file", task_ids="reader")
@@ -158,12 +189,10 @@ def task_write(**context):
     logger.info(f"Moved source file to: {dest}")
 
 
-# ── DAG ───────────────────────────────────────────────────────────────────────
-
 with DAG(
     dag_id="realtime_sales_pipeline",
     default_args=default_args,
-    description="Part 2: Real-Time Sales Data Processing with Folder Monitoring",
+    description="Real-Time Sales Data Processing with Folder Monitoring",
     schedule_interval=timedelta(minutes=1),   # Poll every minute
     start_date=datetime(2025, 1, 1),
     catchup=False,
