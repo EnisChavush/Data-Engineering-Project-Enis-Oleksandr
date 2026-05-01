@@ -1,14 +1,3 @@
-"""
-realtime_pipeline_dag.py – Airflow DAG for Real-Time Sales Data Processing (Part 2).
-
-Uses a FileSensor to monitor an input folder.
-When a new .csv or .xlsx file lands, the full pipeline runs:
-  Sensor → Reader → Validator → Processor → Backup Validator → Writer
-
-The processed file is moved to a "processed" sub-folder so the sensor
-doesn't re-trigger on the same file.
-"""
-
 import logging
 import shutil
 import sys
@@ -29,7 +18,6 @@ from pipeline.writer import write_all
 
 logger = logging.getLogger(__name__)
 
-# ── Config ────────────────────────────────────────────────────────────────────
 INPUT_DIR = Path(Variable.get(
     "REALTIME_INPUT_DIR",
     default_var=str(Path(__file__).resolve().parent.parent / "input"),
@@ -48,7 +36,6 @@ default_args = {
 }
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _find_new_file() -> Path | None:
     """Return the first unprocessed .csv or .xlsx file in the input folder."""
@@ -67,8 +54,6 @@ def _read_file(path: Path) -> pd.DataFrame:
         return pd.read_excel(path)
     raise ValueError(f"Unsupported file type: {path.suffix}")
 
-
-# ── Task functions ────────────────────────────────────────────────────────────
 
 def task_detect_and_read(**context):
     file_path = _find_new_file()
@@ -192,7 +177,7 @@ with DAG(
         filepath=str(INPUT_DIR / "*.csv"),   # Airflow FileSensor uses glob
         fs_conn_id="fs_default",
         poke_interval=30,         # Check every 30 seconds
-        timeout=60 * 60,          # Give up after 1 hour
+        timeout=60 * 60,          # Time out after 1 hour
         mode="poke",
     )
 
