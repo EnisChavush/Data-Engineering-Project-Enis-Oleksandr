@@ -1,5 +1,11 @@
 de_project/yellow_tripdata_2025-01.parquet
 de_project/output/
 de_project/input/processed/
+
+.idea/
+
 __pycache__/
+**/__pycache__/
 *.pyc
+*.pyo
+*.pyd

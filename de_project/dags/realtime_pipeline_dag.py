@@ -17,8 +17,8 @@ from datetime import datetime, timedelta
 
 import pandas as pd
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.sensors.filesystem import FileSensor
+from airflow.providers.standard.operators.python import PythonOperator
+from airflow.providers.standard.sensors.filesystem import FileSensor
 from airflow.models import Variable
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
