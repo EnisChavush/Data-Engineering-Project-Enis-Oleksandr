@@ -1,11 +1,3 @@
-"""
-validator.py – Validates the Yellow Taxi DataFrame against the rules defined in
-validation_rules/batch_rules.json.
-
-Returns a tuple of (valid_df, invalid_df) so the pipeline can write invalid
-rows to a quarantine file for investigation.
-"""
-
 import json
 import logging
 from pathlib import Path
@@ -25,7 +17,7 @@ def _load_rules(rules_path: Path = RULES_PATH) -> dict:
 
 def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Validate *df* against the JSON rules file.
+    Validates df against the JSON rules file.
 
     Args:
         df:          Raw DataFrame from the reader.
@@ -47,18 +39,15 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
         nonlocal invalid_mask
         invalid_mask |= mask
 
-    # ── 1. Mandatory columns present ──────────────────────────────────────────
     missing_cols = [c for c in mandatory_cols if c not in df.columns]
     if missing_cols:
         raise ValueError(f"Dataset is missing mandatory columns: {missing_cols}")
 
-    # ── 2. Mandatory columns not-null ─────────────────────────────────────────
     for col in mandatory_cols:
         null_mask = df[col].isnull()
         if null_mask.any():
             flag(null_mask, f"{col}: mandatory column has null values")
 
-    # ── 3. Column-level rules ─────────────────────────────────────────────────
     for col, rule in col_rules.items():
         if col not in df.columns:
             continue
@@ -71,7 +60,6 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
 
         # numeric bounds
         if rule.get("type") == "numeric" and col in df.columns:
-            non_null = series.dropna()
             if "min" in rule:
                 flag(series.notna() & (series < rule["min"]),
                      f"{col}: value below minimum {rule['min']}")
@@ -84,7 +72,7 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
             bad = series.notna() & ~series.isin(rule["allowed_values"])
             flag(bad, f"{col}: value not in allowed set {rule['allowed_values']}")
 
-        # integer bounds (PULocationID / DOLocationID)
+        # integer bounds
         if rule.get("type") == "integer" and col in df.columns:
             if "min" in rule:
                 flag(series.notna() & (series < rule["min"]),
@@ -96,9 +84,8 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
         # datetime ordering
         if rule.get("after_column") and rule["after_column"] in df.columns:
             bad_order = df[col] <= df[rule["after_column"]]
-            flag(bad_order, f"{col}: dropoff is not after pickup")
+            flag(bad_order, f"{col}: dropoff is before pickup")
 
-    # ── 4. Build output DataFrames ────────────────────────────────────────────
     invalid_df = df[invalid_mask].copy()
     invalid_df["_validation_errors"] = [
         "; ".join(failure_reasons.get(i, [])) for i in invalid_df.index

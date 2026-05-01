@@ -1,15 +1,3 @@
-"""
-writer.py – Writes the processed DataFrame to:
-  1. A local output folder (parquet)
-  2. Azure Blob Storage
-
-Azure credentials are read from environment variables:
-  AZURE_STORAGE_CONNECTION_STRING  (preferred)
-  or AZURE_STORAGE_ACCOUNT_NAME + AZURE_STORAGE_ACCOUNT_KEY
-
-Set AZURE_CONTAINER_NAME to override the default container name.
-"""
-
 import logging
 import os
 from pathlib import Path
@@ -22,11 +10,9 @@ DEFAULT_CONTAINER = "yellow-taxi-processed"
 LOCAL_OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 
 
-# ── Local writer ──────────────────────────────────────────────────────────────
-
 def write_local(df: pd.DataFrame, filename: str = "yellow_taxi_processed.parquet") -> Path:
     """
-    Write DataFrame to the local output folder as parquet.
+    Writes DataFrame to the local output folder as parquet.
 
     Args:
         df:       Processed DataFrame.
@@ -43,7 +29,7 @@ def write_local(df: pd.DataFrame, filename: str = "yellow_taxi_processed.parquet
 
 
 def write_invalid_local(df: pd.DataFrame, filename: str = "yellow_taxi_invalid.parquet") -> Path:
-    """Write rejected rows to the local output folder."""
+    """Writes rejected rows to the local output folder."""
     LOCAL_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = LOCAL_OUTPUT_DIR / filename
     df.to_parquet(out_path, index=False)
@@ -51,10 +37,8 @@ def write_invalid_local(df: pd.DataFrame, filename: str = "yellow_taxi_invalid.p
     return out_path
 
 
-# ── Azure Blob writer ─────────────────────────────────────────────────────────
-
 def _get_blob_service_client():
-    """Build an Azure BlobServiceClient from environment variables."""
+    """Builds an Azure BlobServiceClient from environment variables."""
     try:
         from azure.storage.blob import BlobServiceClient
     except ImportError:
@@ -87,7 +71,7 @@ def write_azure(
     container_name: str | None = None,
 ) -> str:
     """
-    Upload the processed DataFrame to Azure Blob Storage as parquet.
+    Uploads the processed DataFrame to Azure Blob Storage as parquet.
 
     Args:
         df:             Processed DataFrame.
@@ -124,15 +108,13 @@ def write_azure(
     return url
 
 
-# ── Combined writer ───────────────────────────────────────────────────────────
-
 def write_all(
     valid_df: pd.DataFrame,
     invalid_df: pd.DataFrame,
     upload_to_azure: bool = True,
 ) -> dict:
     """
-    Write valid and invalid DataFrames to all destinations.
+    Writes valid and invalid DataFrames to all destinations.
 
     Args:
         valid_df:        Processed, clean rows.

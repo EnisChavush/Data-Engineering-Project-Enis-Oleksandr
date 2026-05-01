@@ -11,7 +11,7 @@ import pandas as pd
 import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s %(name)s: %(message)s')
 
-print("=== Part 2: Real-Time Pipeline ===")
+print("Running Real-Time Pipeline.")
 
 file = Path(__file__).resolve().parent / "input" / "sales_transactions_dirty.csv"
 
@@ -29,4 +29,4 @@ results = write_all(
 )
 
 print(f"Results: {results}")
-print("=== Done! Check the output/ folder and Azure ===")
+print("Done! Check the output/ folder and Azure.")

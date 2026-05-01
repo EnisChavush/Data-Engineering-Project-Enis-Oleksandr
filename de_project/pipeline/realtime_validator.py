@@ -1,8 +1,3 @@
-"""
-realtime_validator.py – Validates incoming real-time sales CSV/XLSX files
-against validation_rules/realtime_rules.json.
-"""
-
 import json
 import logging
 from pathlib import Path
@@ -22,7 +17,7 @@ def _load_rules(rules_path: Path = RULES_PATH) -> dict:
 
 def validate_realtime(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Validate a sales transaction DataFrame.
+    Validates a sales transaction DataFrame.
 
     Returns:
         (valid_df, invalid_df)
@@ -40,16 +35,13 @@ def validate_realtime(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[
         nonlocal invalid_mask
         invalid_mask |= mask
 
-    # ── 1. Mandatory columns present ──────────────────────────────────────────
     missing = [c for c in mandatory_cols if c not in df.columns]
     if missing:
         raise ValueError(f"Missing mandatory columns: {missing}")
 
-    # ── 2. Mandatory not-null ─────────────────────────────────────────────────
     for col in mandatory_cols:
         flag(df[col].isnull(), f"{col}: mandatory column has null value")
 
-    # ── 3. Per-column rules ───────────────────────────────────────────────────
     for col, rule in col_rules.items():
         if col not in df.columns:
             continue
@@ -70,7 +62,6 @@ def validate_realtime(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[
                 flag(series.notna() & (pd.to_numeric(series, errors="coerce") > rule["max"]),
                      f"{col}: above maximum {rule['max']}")
 
-    # ── 4. Output ─────────────────────────────────────────────────────────────
     invalid_df = df[invalid_mask].copy()
     invalid_df["_validation_errors"] = [
         "; ".join(failure_reasons.get(i, [])) for i in invalid_df.index

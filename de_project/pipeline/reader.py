@@ -1,7 +1,3 @@
-"""
-reader.py – Reads the Yellow Taxi Trip Records parquet file into a DataFrame.
-"""
-
 import logging
 import pandas as pd
 

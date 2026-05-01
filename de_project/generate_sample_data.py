@@ -1,11 +1,3 @@
-"""
-generate_sample_data.py – Generates a sample sales transaction CSV for Part 2 testing.
-
-Run: python generate_sample_data.py
-Writes: input/sales_transactions.csv  (clean)
-        input/sales_transactions_dirty.csv  (with intentional errors for testing)
-"""
-
 import random
 import uuid
 from datetime import datetime, timedelta

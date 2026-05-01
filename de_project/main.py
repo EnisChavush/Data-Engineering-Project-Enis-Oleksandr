@@ -12,7 +12,7 @@ from pipeline.writer import write_all
 import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s %(name)s: %(message)s')
 
-print("=== Part 1: Batch Pipeline ===")
+print("Running Batch Pipeline.")
 
 df = read_parquet(str(Path(__file__).resolve().parent / "yellow_tripdata_2025-01.parquet"))
 
@@ -25,4 +25,4 @@ clean_df, quarantine_df = backup_validate(processed_df)
 results = write_all(clean_df, invalid_df, upload_to_azure=True)
 
 print(f"Results: {results}")
-print("=== Done! Check the output/ folder and Azure ===")
+print("Done! Check the output/ folder and Azure")
