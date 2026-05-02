@@ -11,8 +11,11 @@ RULES_PATH = Path(__file__).resolve().parent.parent / "validation_rules" / "real
 
 
 def _load_rules(rules_path: Path = RULES_PATH) -> dict:
-    with open(rules_path) as f:
-        return json.load(f)
+    try:
+        with open(rules_path) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Validation rules file not found at: {rules_path}")
 
 
 def validate_realtime(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFrame, pd.DataFrame]:
@@ -37,7 +40,10 @@ def validate_realtime(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[
 
     missing = [c for c in mandatory_cols if c not in df.columns]
     if missing:
-        raise ValueError(f"Missing mandatory columns: {missing}")
+        logger.error(f"Missing mandatory columns: {missing} - quarantining all rows")
+        invalid_df = df.copy()
+        invalid_df["_validation_errors"] = f"Missing mandatory columns: {missing}"
+        return pd.DataFrame(columns=df.columns), invalid_df
 
     for col in mandatory_cols:
         flag(df[col].isnull(), f"{col}: mandatory column has null value")
@@ -61,6 +67,14 @@ def validate_realtime(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[
             if "max" in rule:
                 flag(series.notna() & (pd.to_numeric(series, errors="coerce") > rule["max"]),
                      f"{col}: above maximum {rule['max']}")
+
+        if rule.get("type") == "datetime":
+            parsed = pd.to_datetime(series, errors="coerce")
+            flag(series.notna() & parsed.isna(), f"{col}: invalid datetime format")
+
+        if rule.get("type") == "boolean":
+            flag(series.notna() & ~series.isin([True, False, 0, 1]),
+                 f"{col}: expected boolean value (True/False/0/1)")
 
     invalid_df = df[invalid_mask].copy()
     invalid_df["_validation_errors"] = [

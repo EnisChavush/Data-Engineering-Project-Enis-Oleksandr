@@ -11,8 +11,11 @@ RULES_PATH = Path(__file__).resolve().parent.parent / "validation_rules" / "batc
 
 
 def _load_rules(rules_path: Path = RULES_PATH) -> dict:
-    with open(rules_path, "r") as f:
-        return json.load(f)
+    try:
+        with open(rules_path, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Validation rules file not found at: {rules_path}")
 
 
 def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFrame, pd.DataFrame]:
@@ -41,7 +44,17 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
 
     missing_cols = [c for c in mandatory_cols if c not in df.columns]
     if missing_cols:
-        raise ValueError(f"Dataset is missing mandatory columns: {missing_cols}")
+        logger.error(f"Dataset is missing mandatory columns: {missing_cols} — quarantining all rows")
+        invalid_df = df.copy()
+        invalid_df["_validation_errors"] = f"Dataset missing mandatory columns: {missing_cols}"
+        return pd.DataFrame(columns=df.columns), invalid_df
+
+    datetime_cols = {col for col, rule in col_rules.items() if rule.get("type") == "datetime" and col in df.columns}
+    parsed_datetimes: dict[str, pd.Series] = {}
+    for col in datetime_cols:
+        parsed = pd.to_datetime(df[col], errors="coerce")
+        flag(df[col].notna() & parsed.isna(), f"{col}: invalid datetime format")
+        parsed_datetimes[col] = parsed
 
     for col in mandatory_cols:
         null_mask = df[col].isnull()
@@ -58,33 +71,25 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
         if rule.get("not_null") and series.isnull().any():
             flag(series.isnull(), f"{col}: null value not allowed")
 
-        # numeric bounds
-        if rule.get("type") == "numeric" and col in df.columns:
+        if rule.get("type") in ("numeric", "integer"):
+            numeric_series = pd.to_numeric(series, errors="coerce")
+            flag(series.notna() & numeric_series.isna(), f"{col}: non-numeric value")
             if "min" in rule:
-                flag(series.notna() & (series < rule["min"]),
+                flag(numeric_series.notna() & (numeric_series < rule["min"]),
                      f"{col}: value below minimum {rule['min']}")
             if "max" in rule:
-                flag(series.notna() & (series > rule["max"]),
+                flag(numeric_series.notna() & (numeric_series > rule["max"]),
                      f"{col}: value above maximum {rule['max']}")
 
-        # integer allowed_values
         if "allowed_values" in rule:
             bad = series.notna() & ~series.isin(rule["allowed_values"])
             flag(bad, f"{col}: value not in allowed set {rule['allowed_values']}")
 
-        # integer bounds
-        if rule.get("type") == "integer" and col in df.columns:
-            if "min" in rule:
-                flag(series.notna() & (series < rule["min"]),
-                     f"{col}: value below minimum {rule['min']}")
-            if "max" in rule:
-                flag(series.notna() & (series > rule["max"]),
-                     f"{col}: value above maximum {rule['max']}")
-
-        # datetime ordering
         if rule.get("after_column") and rule["after_column"] in df.columns:
-            bad_order = df[col] <= df[rule["after_column"]]
-            flag(bad_order, f"{col}: dropoff is before pickup")
+            col_dt = parsed_datetimes.get(col, pd.to_datetime(df[col], errors="coerce"))
+            ref_dt = parsed_datetimes.get(rule["after_column"], pd.to_datetime(df[rule["after_column"]], errors="coerce"))
+            both_valid = col_dt.notna() & ref_dt.notna()
+            flag(both_valid & (col_dt <= ref_dt), f"{col}: dropoff is before or equal to pickup")
 
     invalid_df = df[invalid_mask].copy()
     invalid_df["_validation_errors"] = [
@@ -92,8 +97,10 @@ def validate(df: pd.DataFrame, rules_path: Path = RULES_PATH) -> Tuple[pd.DataFr
     ]
     valid_df = df[~invalid_mask].copy()
 
+    total = len(df)
+    pct = f"{len(invalid_df) / total * 100:.2f}%" if total > 0 else "N/A"
     logger.info(
         f"Validation complete – valid: {len(valid_df):,}, invalid: {len(invalid_df):,} "
-        f"({len(invalid_df)/len(df)*100:.2f}% rejected)"
+        f"({pct} rejected)"
     )
     return valid_df, invalid_df
