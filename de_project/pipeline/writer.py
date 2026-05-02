@@ -112,6 +112,7 @@ def write_all(
     valid_df: pd.DataFrame,
     invalid_df: pd.DataFrame,
     upload_to_azure: bool = True,
+    container_name: str = None,
 ) -> dict:
     """
     Writes valid and invalid DataFrames to all destinations.
@@ -130,7 +131,7 @@ def write_all(
 
     if upload_to_azure:
         try:
-            result["azure_url"] = write_azure(valid_df)
+            result["azure_url"] = write_azure(valid_df, container_name=container_name)
         except EnvironmentError as e:
             logger.warning(f"Azure upload skipped: {e}")
         except Exception as e:
