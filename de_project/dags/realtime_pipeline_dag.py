@@ -180,6 +180,7 @@ def task_write(**context):
         valid_df=clean_df,
         invalid_df=invalid_df,
         upload_to_azure=UPLOAD_TO_AZURE,
+        container_name="sales-processed"
     )
     logger.info(f"Write results: {results}")
 
