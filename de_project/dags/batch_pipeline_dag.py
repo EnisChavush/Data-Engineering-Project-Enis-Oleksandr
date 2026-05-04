@@ -91,7 +91,7 @@ with DAG(
     dag_id="yellow_taxi_batch_pipeline",
     default_args=default_args,
     description="Yellow Taxi Batch Processing Pipeline",
-    schedule_interval="0,5,10,15,20,25,30,35,40,45,50,55 10 4 5 *",
+    schedule_interval="0,5,10,15,20,25,30,35,40,45,50,55 8 4 5 *",
     start_date=datetime(2026, 5, 3),
     catchup=False,
     tags=["batch", "yellow-taxi", "de-project"],
